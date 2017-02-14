@@ -10,12 +10,12 @@ body {
 	font-weight: normal;
 	font-style: normal;
 	text-align: justify;
-	-ms-text-size-adjust: none;
-	-moz-text-size-adjust: none;
-	-webkit-text-size-adjust: none;
 }
 $wrapper {
 	overflow-x: hidden;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
 }
 p {
 	font-size: 18px;
