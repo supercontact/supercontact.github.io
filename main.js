@@ -92,8 +92,10 @@ function main() {
 	scrolling();
 	$(window).resize(resizing);
 	$(window).scroll(scrolling);
-	setInterval(update, frameTime);
-	
+	setTimeout(start, 200);
+}
+
+function start() {
 	$("#line").css("width", "800px");
 	$("#title").css("opacity", 1);
 	$("#subtitle").css("opacity", 1);
@@ -101,6 +103,7 @@ function main() {
 	$("#gear").css("opacity", 1);
 	$(".back").css("transform", "rotateY(180deg)  scale(" + cardWidth / articleWidth + "," + cardHeight / articleHeight + ")");
 	$("#curtain").hide();
+	setInterval(update, frameTime);
 }
 
 function articleLoadingComplete() {
@@ -178,6 +181,4 @@ function scrollImgRight(event) {
 	}
 }
 
-$(function() {
-	$(document).ready(main);
-});
+$(main);
