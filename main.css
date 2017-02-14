@@ -11,7 +11,7 @@ body {
 	font-style: normal;
 	text-align: justify;
 }
-$wrapper {
+#wrapper {
 	overflow-x: hidden;
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
