@@ -68,7 +68,7 @@ function update() {
 		bg = content.find(".bg");
 		//pos = window.innerHeight + (smoothedPos + window.innerHeight - container.offset().top) / (window.innerHeight + container.height()) * ( - bg.height() - window.innerHeight);
 		pos = - smoothedPos / $("#content").height() * (bg.height() - window.innerHeight);
-		content.css("top", pos);
+		content.css("top", pos + "px");
 	}
 }
 
@@ -90,8 +90,12 @@ function main() {
 	
 	resizing();
 	scrolling();
-	$(window).resize(resizing);
-	$(window).scroll(scrolling);
+	$(window).on('resize', function() {
+		window.requestAnimationFrame(resizing);
+	});
+	$(window).on('scroll', function() {
+		window.requestAnimationFrame(scrolling);
+	});
 	setTimeout(start, 200);
 }
 
