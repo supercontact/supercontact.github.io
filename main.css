@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Pacifico|Sansita');
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	color: #444444;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 18px;
+	font-weight: normal;
+	font-style: normal;
+	text-align: justify;
+	overflow-x: hidden;
+}
+h3 {
+	font-family: 'Sansita', sans-serif;
+	text-align: center;
+	font-size: 35px;
+	font-weight: normal;
+	font-style: normal;
+}
+h4 {
+	font-family: 'Sansita', sans-serif;
+	font-size: 30px;
+	font-weight: normal;
+	font-style: normal;
+	margin: 20px 0;
+}
+ul, ol {
+	line-height: 1.5em;
+	margin: 0.5em 0;
+}
+.window {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	clip: rect(auto, auto, auto, auto);
+	background-color: black;
+	z-index: -2;
+}
+.far {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+.bg {
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: -1;
+}
+#first .bg {
+	opacity: 0;
+	transition: opacity 1500ms;
+	transition-delay: 1500ms;
+}
+.centered {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -70%);
+}
+#title {
+	opacity: 0;
+	color: white;
+	font-family: "Pacifico", cursive;
+	font-size: 80px;
+	font-style: normal;
+	font-weight: normal;
+	text-align: center;
+	transition: opacity 1000ms;
+	transition-delay: 500ms;
+	margin-bottom: 30px;
+}
+#subtitle {
+	opacity: 0;
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: normal;
+	text-align: center;
+	padding-top: 10px;
+	transition: opacity 1000ms;
+	transition-delay: 1000ms;
+}
+#line {
+	margin: 0 auto 0 auto;
+	background-color: white;
+	height: 2px;
+	width: 0;
+	transition: width 1000ms;
+}
+#first {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+#next {
+	position: relative;
+	width: 100%;
+}
+.topEdge {
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 100%;
+	width: 100%;
+	height: 40px;
+	z-index: 1;
+}
+.bottomEdge {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 100%;
+	width: 100%;
+	height: 40px;
+	transform: scaleY(-1);
+	z-index: 1;
+}
+#intro {
+	position: relative;
+	min-height: 400px;
+	background-color: white;
+	padding:40px;
+}
+#intro p {
+	text-align: justify;
+	line-height: 1.7em;
+	max-width: 1200px;
+	margin: 40px auto;
+}
+#projectIntro {
+	position: relative;
+	min-height: 300px;
+	background-color: #ced7e0;
+	padding:40px;
+}
+#projects {
+	position: relative;
+	width: 100%;
+	height: 9000px;
+}
+#projects datetime {
+	float: right;
+	color: #AAAAAA;
+	font-style: italic;
+}
+#projects .author {
+	font-style: italic;
+	margin-bottom: 40px;
+}
+#links {
+	position: relative;
+	height: 300px;
+	background-color: #444444;
+	overflow:hidden;
+	padding:50px;
+}
+.project {
+	position: absolute;
+	transition: top 500ms, left 500ms, transform 500ms;
+}
+.front {
+	position: absolute;
+	left: -100px;
+	top: -120px;
+	width: 180px;
+	height: 220px;
+	background-color: white;
+	margin: 0;
+	padding: 10px;
+	transition: transform 1000ms;
+	backface-visibility: hidden;
+}
+.front>.thumbnail {
+	width: 100%;
+}
+.front>figcaption {
+	margin-top: 8px;
+	width: 100%;
+	text-align: center;
+}
+.front>.shadow {
+	position: absolute;
+	left: -20px;
+	top: -20px;
+}
+.back {
+	position: absolute;
+	left: -500px;
+	top: -600px;
+	width: 920px;
+	height: 1120px;
+	background-color: white;
+	background-size: cover;
+	background-position: center;
+	margin: 0;
+	padding: 40px;
+	transform: rotateY(180deg);
+	transition: transform 1000ms;
+	backface-visibility: hidden;
+}
+.floatRight {
+	float: right;
+	margin: 5px 0 20px 20px;
+}
+.floatLeft {
+	float: left;
+	margin: 5px 20px 20px 0px;
+}
+.imgWall {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 260px;
+	width: 100%;
+	background-color: #444444;
+	overflow: hidden;
+}
+.imgLine {
+	position: absolute;
+	top: 40px;
+	left: 110px;
+	height: 180px;
+	width: 10000px;
+	transition: left 500ms;
+}
+.imgContainer {
+	display: inline-block;
+	height: 180px;
+	width: 220px;
+	margin: 0 20px;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center;
+}
+.rightShade {
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 1;
+}
+.leftShade {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transform: scaleX(-1);
+	z-index: 1;
+}
+.rightArrow {
+	display: block;
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translate(0, -50%);
+	transition: right 300ms;
+	z-index: 2;
+}
+.leftArrow {
+	display: block;
+	position: absolute;
+	left: 20px;
+	top: 50%;
+	transform: translate(0, -50%) scaleX(-1);
+	transition: left 300ms;
+	z-index: 2;
+}
+.tags span {
+	color: white;
+	font-size: 15px;
+	padding: 2px 6px;
+	margin: 0 2px;
+	border-radius: 15px;
+}
+.tags .tagCollegeProject {
+	background-color: #0066ff;
+}
+.tags .tagPersonalProject {
+	background-color: #ff0077;
+}
+.tags .tagAr {
+	background-color: red;
+}
+.tags .tagAndroid {
+	background-color: #99cc00;
+}
+#scrollBar {
+	position: fixed;
+	z-index: 10;
+}
+#gear {
+	display: block;
+	opacity: 0;
+	transition: opacity 1000ms;
+	transition-delay: 3000ms;
+}
