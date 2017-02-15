@@ -38,79 +38,19 @@ ul, ol {
 	line-height: 1.5em;
 	margin: 0.5em 0;
 }
-.window {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	clip: rect(auto, auto, auto, auto);
-	background-color: black;
-	z-index: -2;
-}
-.far {
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	z-index: -1;
-}
-.bg {
-	display: block;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: -1;
-}
-#first .bg {
-	opacity: 0;
-	transition: opacity 1500ms;
-	transition-delay: 1500ms;
-}
 .centered {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -70%);
 }
-#title {
-	opacity: 0;
-	color: white;
-	font-family: "Pacifico", cursive;
-	font-size: 80px;
-	font-style: normal;
-	font-weight: normal;
-	text-align: center;
-	transition: opacity 1000ms;
-	transition-delay: 500ms;
-	margin-bottom: 30px;
+.floatRight {
+	float: right;
+	margin: 5px 0 20px 20px;
 }
-#subtitle {
-	opacity: 0;
-	color: white;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 20px;
-	font-style: normal;
-	font-weight: normal;
-	text-align: center;
-	padding-top: 10px;
-	transition: opacity 1000ms;
-	transition-delay: 1000ms;
-}
-#line {
-	margin: 0 auto 0 auto;
-	background-color: white;
-	height: 2px;
-	width: 0;
-	transition: width 1000ms;
-}
-#first {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-#next {
-	position: relative;
-	width: 100%;
+.floatLeft {
+	float: left;
+	margin: 5px 20px 20px 0px;
 }
 .topEdge {
 	display: block;
@@ -131,39 +71,108 @@ ul, ol {
 	transform: scaleY(-1);
 	z-index: 1;
 }
-#intro {
+.window {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	clip: rect(auto, auto, auto, auto);
+	background-color: black;
+	z-index: -2;
+}
+.window .far {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+.window .far .bg {
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: -1;
+}
+#first {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+#first .bg {
+	opacity: 0;
+	transition: opacity 1500ms;
+	transition-delay: 1500ms;
+}
+#first #title {
+	opacity: 0;
+	color: white;
+	font-family: "Pacifico", cursive;
+	font-size: 80px;
+	font-style: normal;
+	font-weight: normal;
+	text-align: center;
+	transition: opacity 1000ms;
+	transition-delay: 500ms;
+	margin-bottom: 30px;
+}
+#first #subtitle {
+	opacity: 0;
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: normal;
+	text-align: center;
+	padding-top: 10px;
+	transition: opacity 1000ms;
+	transition-delay: 1000ms;
+}
+#first #line {
+	margin: 0 auto 0 auto;
+	background-color: white;
+	height: 2px;
+	width: 0;
+	transition: width 1000ms;
+}
+#next {
+	position: relative;
+	width: 100%;
+}
+
+#next #intro {
 	position: relative;
 	min-height: 400px;
 	background-color: white;
 	padding:40px;
 }
-#intro p {
+#next #intro p {
 	text-align: justify;
 	line-height: 1.7em;
 	max-width: 1200px;
 	margin: 40px auto;
 }
-#projectIntro {
+#next #projectIntro {
 	position: relative;
 	min-height: 300px;
 	background-color: #ced7e0;
 	padding:40px;
 }
-#projects {
+#next #projects {
 	position: relative;
 	width: 100%;
 	height: 9000px;
 }
-#projects datetime {
+#next #projects datetime {
 	float: right;
 	color: #AAAAAA;
 	font-style: italic;
 }
-#projects .author {
+#next #projects .author {
 	font-style: italic;
 	margin-bottom: 40px;
 }
-#links {
+#next #links {
 	position: relative;
 	height: 300px;
 	background-color: #444444;
@@ -180,7 +189,7 @@ ul, ol {
 	top: 0;
 	transition: transform 300ms;
 }
-.front {
+.project .front {
 	position: absolute;
 	left: -100px;
 	top: -120px;
@@ -191,21 +200,22 @@ ul, ol {
 	padding: 10px;
 	transition: transform 1000ms;
 	backface-visibility: hidden;
+	cursor: pointer;
 }
-.front>.thumbnail {
+.project .front .thumbnail {
 	width: 100%;
 }
-.front>figcaption {
+.project .front figcaption {
 	margin-top: 8px;
 	width: 100%;
 	text-align: center;
 }
-.front>.shadow {
+.project .front .shadow {
 	position: absolute;
 	left: -20px;
 	top: -20px;
 }
-.back {
+.project .back {
 	position: absolute;
 	left: -500px;
 	top: -600px;
@@ -220,14 +230,6 @@ ul, ol {
 	transition: transform 1000ms;
 	backface-visibility: hidden;
 }
-.floatRight {
-	float: right;
-	margin: 5px 0 20px 20px;
-}
-.floatLeft {
-	float: left;
-	margin: 5px 20px 20px 0px;
-}
 .imgWall {
 	position: absolute;
 	left: 0;
@@ -237,7 +239,7 @@ ul, ol {
 	background-color: #444444;
 	overflow: hidden;
 }
-.imgLine {
+.imgWall .imgLine {
 	position: absolute;
 	top: 40px;
 	left: 110px;
@@ -245,7 +247,7 @@ ul, ol {
 	width: 10000px;
 	transition: left 500ms;
 }
-.imgContainer {
+.imgWall .imgContainer {
 	display: inline-block;
 	height: 180px;
 	width: 220px;
@@ -253,23 +255,26 @@ ul, ol {
 	overflow: hidden;
 	background-size: cover;
 	background-position: center;
+	cursor: pointer;
 }
-.rightShade {
+.imgWall .rightShade {
 	display: block;
 	position: absolute;
 	right: 0;
 	top: 0;
 	z-index: 1;
+	cursor: pointer;
 }
-.leftShade {
+.imgWall .leftShade {
 	display: block;
 	position: absolute;
 	left: 0;
 	top: 0;
 	transform: scaleX(-1);
 	z-index: 1;
+	cursor: pointer;
 }
-.rightArrow {
+.imgWall .rightArrow {
 	display: block;
 	position: absolute;
 	right: 20px;
@@ -277,11 +282,12 @@ ul, ol {
 	transform: translate(0, -50%);
 	transition: right 300ms;
 	z-index: 2;
+	cursor: pointer;
 }
 .rightArrow:hover, .rightShade:hover + .rightArrow {
 	right: 10px;
 }
-.leftArrow {
+.imgWall .leftArrow {
 	display: block;
 	position: absolute;
 	left: 20px;
@@ -289,6 +295,7 @@ ul, ol {
 	transform: translate(0, -50%) scaleX(-1);
 	transition: left 300ms;
 	z-index: 2;
+	cursor: pointer;
 }
 .leftArrow:hover, .leftShade:hover + .leftArrow {
 	left: 10px;
@@ -312,11 +319,29 @@ ul, ol {
 .tags .tagAndroid {
 	background-color: #99cc00;
 }
+#imgView {
+	position: fixed;
+	display: none;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.75);
+	z-index: 2000;
+}
+#imgView img {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	max-width: 96%;
+	max-height: 96%;
+	transform: translate(-50%, -50%);
+}
 #scrollBar {
 	position: fixed;
 	z-index: 100;
 }
-#gear {
+#scrollBar #gear {
 	display: block;
 	opacity: 0;
 	transition: opacity 1000ms;

@@ -1,9 +1,13 @@
+var currentTime = 0;
 var scrollBarButtonHeight = 14;
 var scrollPos = 0;
 var autoScrollPos = {value: 0};
 var autoScrolling = false;
 var focusedArticle = -1;
-var previouslyFocusedArticle = -1;
+var expandingArticle = -1;
+var expandTimer = 0;
+var expandDuration = 100;
+var expandedArticle = -1;
 var gearSize = 80;
 var articles;
 var cardHeight = 240;
@@ -52,22 +56,31 @@ function scrolling() {
 	} else {
 		focusedArticle = -1;
 	}
-	if (focusedArticle != previouslyFocusedArticle) {
-		if (focusedArticle >= 0 && focusedArticle < articles.length) {
-			expandArticle(focusedArticle);
-		}
-		if (previouslyFocusedArticle >= 0 && previouslyFocusedArticle < articles.length) {
-			shrinkArticle(previouslyFocusedArticle);
-		}
-		previouslyFocusedArticle = focusedArticle;
-	}
 }
 
 function update() {	
+	var deltaTime = Date.now() - currentTime;
+	currentTime += deltaTime;
+	
 	if (autoScrolling) {
 		$(window).scrollTop(autoScrollPos.value);
 	}
 
+	if (focusedArticle != expandingArticle) {
+		expandingArticle = focusedArticle;
+		expandTimer = 0;
+	} else {
+		expandTimer += deltaTime;
+		if ((expandTimer >= expandDuration || !articlesDeployed) && expandingArticle != expandedArticle) {
+			if (expandingArticle >= 0 && expandingArticle < articles.length) {
+				expandArticle(expandingArticle);
+			}
+			if (expandedArticle >= 0 && expandedArticle < articles.length) {
+				shrinkArticle(expandedArticle);
+			}
+			expandedArticle = expandingArticle;
+		}
+	}
 
 	var windows = $(".window");
 	var i, w, content, bg, pos;
@@ -84,6 +97,7 @@ function update() {
 function main() {
 	$("#gear").css("width", gearSize);
 	$("#gear").css("height", gearSize);
+	$("#imgView").click(hideImage);
 	articles = $(".project");
 	var i, alpha;
 	for (i = 0; i < articles.length; i++) {
@@ -136,7 +150,7 @@ function articleLoadingComplete() {
 			articles.eq(i).find(".back").css("background-image", "linear-gradient(rgba(255,255,255," + alpha + "), rgba(255,255,255," + alpha + ")), url(" + articles.eq(i).find(".thumbnail").prop("src") + ")");
 			imgs = articles.eq(i).find(".imgWall img");
 			for (j = 0; j < imgs.length; j++) {
-				articles.eq(i).find(".imgLine").append('<span class="imgContainer" style="background-image:url(' + imgs.eq(j).prop("src") + ')"></span>');
+				articles.eq(i).find(".imgLine").append('<span class="imgContainer" style="background-image:url(' + imgs.eq(j).prop("src") + ')" data-src="' + imgs.eq(j).prop("src") + '"></span>');
 			}
 			imgs.remove();
 			articleImgCount[i] = articles.eq(i).find(".imgLine .imgContainer").length;
@@ -149,6 +163,7 @@ function articleLoadingComplete() {
 			articles.eq(i).find(".rightShade, .rightArrow").on("mousedown", i, scrollImgRight);
 			articles.eq(i).find(".leftShade, .leftArrow").on("mousedown", i, scrollImgLeft);
 		}
+		$(".imgContainer").click(viewImage);
 	}
 }
 
@@ -231,6 +246,15 @@ function scrollImgRight(event) {
 		var line = articles.eq(event.data).find(".imgLine");
 		line.css("left", 110 - 260 * articleImgLinePos[event.data] + "px");
 	}
+}
+
+function viewImage(event) {
+	$("#imgView img").prop("src", $(event.target).attr("data-src"));
+	$("#imgView").fadeIn(300);
+}
+
+function hideImage() {
+	$("#imgView").fadeOut(300);
 }
 
 $(main);
