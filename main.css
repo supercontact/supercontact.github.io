@@ -174,6 +174,12 @@ ul, ol {
 	position: absolute;
 	transition: top 500ms, left 500ms, transform 500ms;
 }
+.project .projectWrapper {
+	position: absolute;
+	left: 0;
+	top: 0;
+	transition: transform 300ms;
+}
 .front {
 	position: absolute;
 	left: -100px;
@@ -272,6 +278,9 @@ ul, ol {
 	transition: right 300ms;
 	z-index: 2;
 }
+.rightArrow:hover, .rightShade:hover + .rightArrow {
+	right: 10px;
+}
 .leftArrow {
 	display: block;
 	position: absolute;
@@ -280,6 +289,9 @@ ul, ol {
 	transform: translate(0, -50%) scaleX(-1);
 	transition: left 300ms;
 	z-index: 2;
+}
+.leftArrow:hover, .leftShade:hover + .leftArrow {
+	left: 10px;
 }
 .tags span {
 	color: white;
@@ -302,7 +314,7 @@ ul, ol {
 }
 #scrollBar {
 	position: fixed;
-	z-index: 10;
+	z-index: 100;
 }
 #gear {
 	display: block;
