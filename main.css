@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Pacifico|Sansita');
-
 body {
 	margin: 0;
 	padding: 0;
@@ -19,20 +17,6 @@ body {
 }
 p {
 	font-size: 18px;
-}
-h3 {
-	font-family: 'Sansita', sans-serif;
-	text-align: center;
-	font-size: 35px;
-	font-weight: normal;
-	font-style: normal;
-}
-h4 {
-	font-family: 'Sansita', sans-serif;
-	font-size: 30px;
-	font-weight: normal;
-	font-style: normal;
-	margin: 20px 0;
 }
 ul, ol {
 	line-height: 1.5em;
@@ -139,7 +123,13 @@ ul, ol {
 	position: relative;
 	width: 100%;
 }
-
+#next #intro h2, #next #projectIntro h2 {
+	font-family: 'Sansita', sans-serif;
+	text-align: center;
+	font-size: 35px;
+	font-weight: normal;
+	font-style: normal;
+}
 #next #intro {
 	position: relative;
 	min-height: 400px;
@@ -172,12 +162,92 @@ ul, ol {
 	font-style: italic;
 	margin-bottom: 40px;
 }
-#next #links {
+#next #contact {
 	position: relative;
-	height: 300px;
+	height: 250px;
 	background-color: #444444;
-	overflow:hidden;
-	padding:50px;
+	overflow: hidden;
+	padding: 50px;
+}
+#next #contact #lineL{
+	position: absolute;
+	left: 50%;
+	top: 112px;
+	width: 200px;
+	height: 3px;
+	background-color: #CCCCCC;
+	transform: translate(-340px, 0);
+}
+#next #contact #lineR{
+	position: absolute;
+	left: 50%;
+	top: 112px;
+	width: 200px;
+	height: 3px;
+	background-color: #CCCCCC;
+	transform: translate(140px, 0);
+}
+#next #contact h2 {
+	font-family: "Pacifico", cursive;
+	text-align: center;
+	color: #CCCCCC;
+	font-size: 35px;
+	font-weight: normal;
+	font-style: normal;
+	letter-spacing: 4px;
+}
+#next #contact #icons {
+	text-align: center;
+	margin-top: 60px;
+}
+#next #contact #icons a {
+	color: #CCCCCC;
+	margin: 0 70px;
+	cursor: pointer;
+}
+#next #contact #icons a:link {
+	color: #CCCCCC;
+}
+#next #contact #icons a:visited {
+	color: #CCCCCC;
+}
+#linkedin span:hover {
+	color: #88b2e8;
+	transition: color 200ms;
+}
+#github span:hover {
+	color: #bc88e8;
+	transition: color 200ms;
+}
+#mail span:hover {
+	color: #fff7db;
+	transition: color 200ms;
+}
+#mail {
+	transition: opacity 500ms;
+}
+#next #contact #generated {
+	display: none;
+	position: absolute;
+	left: 50%;
+	top: 215px;
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
+	color: #fff7db;
+	transform: translate(-50%, 0);
+}
+#next footer {
+	position: relative;
+	height: 30px;
+	background-color: #222222;
+	padding: 4px 0;
+}
+#next footer p {
+	text-align: center;
+	color: #666666;
+	font-size: 17px;
+	margin: 4px 0;
 }
 .project {
 	position: absolute;
@@ -229,6 +299,22 @@ ul, ol {
 	transform: rotateY(180deg);
 	transition: transform 1000ms;
 	backface-visibility: hidden;
+}
+.project .back h2 {
+	font-family: 'Sansita', sans-serif;
+	font-size: 30px;
+	font-weight: normal;
+	font-style: normal;
+	text-align: left;
+	margin: 20px 0;
+}
+.project .back .shadow {
+	position: absolute;
+	left: -40px;
+	top: -40px;
+	width: 1080px;
+	height: 1280px;
+	z-index: -1;
 }
 .imgWall {
 	position: absolute;
@@ -318,6 +404,25 @@ ul, ol {
 }
 .tags .tagAndroid {
 	background-color: #99cc00;
+}
+.links {
+	font-weight: bold;
+}
+.links a {
+	margin: 0 5px;
+	transition: color 200ms;
+}
+.links a:link {
+	color: #4286f4;
+}
+.links a:visited {
+	color: #9143e0;
+}
+.links a:hover {
+	color: orange;
+}
+.links a:active {
+	color: red;
 }
 #imgView {
 	position: fixed;

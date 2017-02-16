@@ -110,6 +110,7 @@ function main() {
 		articleImgLinePos[i] = 0;
 	}
 	$("#projects").height(2 * articleGap + articleHeight + (articles.length - 1) * (articleGap + cardHeight / 2 + articleHeight / 2));
+	$("#mail").click(generate);
 	
 	
 	resizing();
@@ -138,6 +139,7 @@ function articleLoadingComplete() {
 	if (articleLoaded == articles.length) {
 		var i, j, front, imgs, imgWalls;
 		$(".front").append('<img src="img/cardShadow.png" class="shadow">');
+		$(".back").append('<img src="img/articleShadow.png" class="shadow">');
 		$(".back").css("transform", "rotateY(180deg)  scale(" + cardWidth / articleWidth + "," + cardHeight / articleHeight + ")");
 		imgWalls = $(".imgWall");
 		imgWalls.append('<div class="imgLine"></div>');
@@ -255,6 +257,30 @@ function viewImage(event) {
 
 function hideImage() {
 	$("#imgView").fadeOut(300);
+}
+
+function generate() {
+	$("#mail").css("opacity", 0);
+	setTimeout(function() {
+		$("#mail").css("visibility", "hidden");
+		var text, text2, text3;
+		text = "riusgown#q.os8igd*j2.sd(uiwh2f$si[[efg;w9k#2@ps.@gs";
+		text2 = "p.o3ilg9%y^qzbts-odie9b.@rtch94%s*shs=sobmetnpw@8";
+		text3 = "iaq;hu4,ce9s8r.gisu]e89%sp#dzp{0)eruf*gaw>";
+		$("#generated").text(process(text)+process(text2)+process(text3));
+		$("#generated").fadeIn(500);
+	}, 500);
+}
+
+function process(str) {
+	var i = 0;
+	var s = 2;
+	var res = "";
+	while (i < str.length) {
+		res += str.charAt(i);
+		i += s; s++;
+	}
+	return res;
 }
 
 $(main);
