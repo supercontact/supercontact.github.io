@@ -434,13 +434,24 @@ ul, ol {
 	background-color: rgba(0, 0, 0, 0.75);
 	z-index: 2000;
 }
-#imgView img {
+#imgView figure {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	max-width: 96%;
-	max-height: 96%;
+	margin: 0;
 	transform: translate(-50%, -50%);
+}
+#imgView figure img {
+	display: block;
+	left: 0;
+	top: 0;
+	width: 100%;
+}
+#imgView figure figcaption {
+	height: 40px;
+	padding: 10px 40px 0px 40px;
+	color: white;
+	text-align: center;
 }
 #scrollBar {
 	position: fixed;

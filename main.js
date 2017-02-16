@@ -19,7 +19,7 @@ var articleWidth = 1000;
 var articleGap = 100;
 var articleDeployHeight = 0;
 var articlesDeployed = false;
-var articleBackgroundImageAlpha = 0.05;
+var articleBackgroundImageAlpha = 0.06;
 var articleImgLinePos = [];
 var articleImgCount = [];
 
@@ -152,7 +152,12 @@ function articleLoadingComplete() {
 			articles.eq(i).find(".back").css("background-image", "linear-gradient(rgba(255,255,255," + alpha + "), rgba(255,255,255," + alpha + ")), url(" + articles.eq(i).find(".thumbnail").prop("src") + ")");
 			imgs = articles.eq(i).find(".imgWall img");
 			for (j = 0; j < imgs.length; j++) {
-				articles.eq(i).find(".imgLine").append('<span class="imgContainer" style="background-image:url(' + imgs.eq(j).prop("src") + ')" data-src="' + imgs.eq(j).prop("src") + '"></span>');
+				articles.eq(i).find(".imgLine").append(
+					'<span class="imgContainer" style="background-image:url(' + imgs.eq(j).prop("src") + 
+					')" data-src="' + imgs.eq(j).prop("src") + 
+					'" data-description="' + imgs.eq(j).attr("data-description") + 
+					'"></span>'
+				);
 			}
 			imgs.remove();
 			articleImgCount[i] = articles.eq(i).find(".imgLine .imgContainer").length;
@@ -251,8 +256,26 @@ function scrollImgRight(event) {
 }
 
 function viewImage(event) {
-	$("#imgView img").prop("src", $(event.target).attr("data-src"));
-	$("#imgView").fadeIn(300);
+	var img = $("#imgView img");
+	var figure = $("#imgView figure");
+	var description = $("#imgView figcaption");
+	var view = $("#imgView");
+	
+	img.prop("src", $(event.target).attr("data-src"));
+	description.html($(event.target).attr("data-description"));
+	var w = img.prop("naturalWidth");
+	var h = img.prop("naturalHeight");
+	var maxW = view.width() * 0.95;
+	var maxH = view.height() * 0.95 - 50;
+	if (w > maxW) {
+		h *= maxW / w; w = maxW;
+	}
+	if (h > maxH) {
+		w *= maxH / h; h = maxH;
+	}
+	figure.width(w);
+	figure.height(h + 50);
+	view.fadeIn(300);
 }
 
 function hideImage() {
