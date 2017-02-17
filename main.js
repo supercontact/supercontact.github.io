@@ -130,8 +130,7 @@ function main() {
 		window.requestAnimationFrame(scrolling);
 	});
 	$("#first .bg").imagesLoaded(function() {
-		$("#loading").fadeOut(500);
-		setTimeout(start, 500);
+		$("#loading").stop().fadeOut(500, start);
 	});
 }
 
