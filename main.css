@@ -363,6 +363,7 @@ ul, ol {
 }
 .imgWall .imgContainer {
 	display: inline-block;
+	position: relative;
 	height: 180px;
 	width: 220px;
 	margin: 0 20px;
@@ -370,6 +371,13 @@ ul, ol {
 	background-size: cover;
 	background-position: center;
 	cursor: pointer;
+}
+.imgWall .imgContainer img {
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 .imgWall .rightShade {
 	display: block;
@@ -424,14 +432,62 @@ ul, ol {
 .tags .tagCollegeProject {
 	background-color: #0066ff;
 }
+.tags .tagCollegeProject::before {
+	content: "College Project";
+}
 .tags .tagPersonalProject {
 	background-color: #ff0077;
+}
+.tags .tagPersonalProject::before {
+	content: "Personal Project";
+}
+.tags .tagGame {
+	background-color: #ffd800;
+}
+.tags .tagGame::before {
+	content: "Game";
+}
+.tags .tagVr {
+	background-color: #004766;
+}
+.tags .tagVr::before {
+	content: "VR";
 }
 .tags .tagAr {
 	background-color: red;
 }
+.tags .tagAr::before {
+	content: "AR";
+}
+.tags .tagLeapMotion {
+	background-color: #7c7c7c;
+}
+.tags .tagLeapMotion::before {
+	content: "Leap Motion";
+}
 .tags .tagAndroid {
 	background-color: #99cc00;
+}
+.tags .tagAndroid::before {
+	content: "Android";
+}
+.tags .tagUnity {
+	background-color: black;
+}
+.tags .tagUnity::before {
+	content: "Unity";
+}
+.tags .tagFlash {
+	background-color: #FF3616;
+}
+.tags .tagFlash::before {
+	content: "Flash";
+}
+.tags .tagSwing {
+	background-color: #2dc0ff;
+}
+.tags .tagSwing::before {
+	content: "Swing";
 }
 .links {
 	font-weight: bold;
@@ -474,6 +530,10 @@ ul, ol {
 	left: 0;
 	top: 0;
 	width: 100%;
+}
+#imgView figure iframe {
+	left: 0;
+	top: 0;
 }
 #imgView figure figcaption {
 	height: 40px;
