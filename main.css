@@ -3,13 +3,41 @@ body {
 	padding: 0;
 	width: 100%;
 	color: #444444;
+	background-color: black;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 18px;
 	font-weight: normal;
 	font-style: normal;
 	text-align: justify;
 }
+
+#loading {
+	display: none;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	width: 0;
+	height: 0;
+	transform: rotate(0deg);
+	transition: transform 60s;
+	transition-timing-function: linear;
+}
+#loading .ball {
+	position: absolute;
+	top: -5px;
+	width: 10px;
+	height: 10px;
+	background-color: white;
+	border-radius: 5px;
+}
+#loading .b1 {
+	left: 10px;
+}
+#loading .b2 {
+	left: -20px;
+}
 #wrapper {
+	visibility: hidden;
 	overflow-x: hidden;
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;

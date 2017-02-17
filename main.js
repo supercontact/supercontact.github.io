@@ -95,6 +95,14 @@ function update() {
 }
 
 function main() {
+	var loading = $("#loading");
+	loading.fadeIn(1000);
+	loading.css("transform", "rotate(10800deg)")
+	WebFont.load({
+		google: {
+		  families: ['Open Sans:400,700', 'Pacifico', 'Sansita']
+		}
+	});
 	$("#gear").css("width", gearSize);
 	$("#gear").css("height", gearSize);
 	$("#imgView").click(hideImage);
@@ -121,7 +129,10 @@ function main() {
 	$(window).on('scroll', function() {
 		window.requestAnimationFrame(scrolling);
 	});
-	setTimeout(start, 200);
+	$("#first .bg").imagesLoaded(function() {
+		$("#loading").fadeOut(500);
+		setTimeout(start, 500);
+	});
 }
 
 function start() {
@@ -130,7 +141,7 @@ function start() {
 	$("#subtitle").css("opacity", 1);
 	$("#first .bg").css("opacity", 1);
 	$("#gear").css("opacity", 1);
-	$("#curtain").hide();
+	$("#wrapper").css("visibility", "visible");
 	window.requestAnimationFrame(update);
 }
 
