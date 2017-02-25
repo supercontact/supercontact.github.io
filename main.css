@@ -447,6 +447,12 @@ ul, ol {
 .tags .tagGame::before {
 	content: "Game";
 }
+.tags .tagTool {
+	background-color: blue;
+}
+.tags .tagTool::before {
+	content: "Tool";
+}
 .tags .tagVr {
 	background-color: #004766;
 }
@@ -483,11 +489,11 @@ ul, ol {
 .tags .tagFlash::before {
 	content: "Flash";
 }
-.tags .tagSwing {
+.tags .tagJavaSwing {
 	background-color: #2dc0ff;
 }
-.tags .tagSwing::before {
-	content: "Swing";
+.tags .tagJavaSwing::before {
+	content: "Java Swing";
 }
 .links {
 	font-weight: bold;
