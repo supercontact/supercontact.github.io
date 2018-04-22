@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+	<figure class="front">
+		<img src="articles/3DPathfinding/thumb.png" class="thumbnail">
+		<figcaption>Pathfinding in 3D</figcaption>
+	</figure>
+	<div class="back">
+		<div class="tags">
+			<span class="tagCollegeProject"></span>
+			<span class="tagResearch"></span>
+			<span class="tagUnity"></span>
+		</div>
+		<h2>Finding the shortest paths in 3D space</h2>
+		<datetime>Mar. 2016</datetime>
+		<p class="author">Ruoqi He, Chia-Man Hung</p>
+		<p><img src="articles/3DPathfinding/thumb.png" class="floatRight" style="width: 200px;">We established an algorithm capable of finding approximate shortest paths in 3D space with arbitrary obstacles. To achieve this, we first apply hierachical space division to build an octree representation of obstacles in space. We then convert it to a graph and apply Lazy Theta* algorithm to find an approximate shortest path in euclidien space constrained by line of sight checks. We also extend it to be able to find the shortest paths from multiple starting points at once, and achienved simutaneous navigation in 3D space for multiple agents without collision. All our results are shown in the demo.</p>
+		<br>
+		<p>Features include:</p>
+		<ul>
+			<li>A demo containing different 3D scenes to navigate around, including a 3D maze</li>
+			<li>Add space ships and click on the map to set their destination</li>
+			<li>See planned shortest paths of space ships</li>
+			<li>Collision-free navigation</li>
+			<li>Path replanning when being pushed to the wrong way</li>
+			<li>Set different octree level to adjust approximate shortest path precision</li>
+			<li>Power testing with different graph type and path-finding algorithms</li>
+		</ul>
+		<p class="links">Links: 
+			<a href="http://www.bunny.com" target="_blank">Demo</a>
+			<a href="http://www.icecream.com" target="_blank">Poster</a>
+			<a href="http://www.icecream.com" target="_blank">Report</a>
+			<a href="http://www.wolf.com" target="_blank">GitHub</a>
+		</p>
+		<div class="imgWall">
+			<img src="articles/3DPathfinding/p1.png" data-description="Navigation in a 3D maze">
+			<img src="articles/3DPathfinding/p2.png" data-description="Space fighters on the move!">
+			<img src="articles/3DPathfinding/p3.png" data-description="Comparaison between different algorithms: Red - A*, Green - θ*, Blue - Lazy θ*">
+			<img src="articles/3DPathfinding/p4.png" data-description="Comparaison between all combinations">
+			<img src="articles/3DPathfinding/p5.png" data-description="Octree (voxelized) representation of the world - leaf nodes">
+		</div>
+	</div>
+</body>
+</html>

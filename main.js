@@ -24,6 +24,8 @@ var articleImgLinePos = [];
 var articleImgCount = [];
 var isViewingImage = false;
 var isViewingVideo = false;
+var viewingArticleIndex = -1;
+var viewingImgIndex = -1;
 
 function resizing() {
 	$("#first").height(window.innerHeight);
@@ -156,6 +158,7 @@ function articleLoadingComplete() {
 	if (articleLoaded == articles.length) {
 		var i, j, front, imgs, imgWalls;
 		$(".front").append('<img src="img/cardShadow.png" class="shadow">');
+		$(".front").append('<img src="img/cardInnerShadow.png" class="shadowInner">');
 		$(".back").append('<img src="img/articleShadow.png" class="shadow">');
 		$(".back").css("transform", "rotateY(180deg)  scale(" + cardWidth / articleWidth + "," + cardHeight / articleHeight + ")");
 		imgWalls = $(".imgWall");
@@ -181,22 +184,27 @@ function articleLoadingComplete() {
 						'<span class="imgContainer video" style="background-image:url(' + imgs.eq(j).prop("src") + 
 						')" data-src="' + imgs.eq(j).attr("data-link") + 
 						'" data-description="' + imgs.eq(j).attr("data-description") + 
-						'"><img src="img/video.png"></img></span>'
+						'"><img src="img/video.png"></span>'
 					);
 				}
 			}
 			imgs.remove();
-			articleImgCount[i] = articles.eq(i).find(".imgLine .imgContainer").length;
+			imgContainers = articles.eq(i).find(".imgLine .imgContainer");
+			articleImgCount[i] = imgContainers.length;
+			for (j = 0; j < imgContainers.length; j++) {
+				imgContainers.eq(j).click({articleIndex: i, imgIndex: j}, viewImage);
+			}
 		}
-		imgWalls.append('<img src="img/shade.png" class="rightShade">');
-		imgWalls.append('<img src="img/arrow.png" class="rightArrow">');
-		imgWalls.append('<img src="img/shade.png" class="leftShade">');
+		imgWalls.append('<img src="img/shadeGrey.png" class="leftShade">');
 		imgWalls.append('<img src="img/arrow.png" class="leftArrow">');
+		imgWalls.append('<img src="img/shadeGrey.png" class="rightShade">');
+		imgWalls.append('<img src="img/arrow.png" class="rightArrow">');
 		for (i = 0; i < articles.length; i++) {
-			articles.eq(i).find(".rightShade, .rightArrow").on("mousedown", i, scrollImgRight);
 			articles.eq(i).find(".leftShade, .leftArrow").on("mousedown", i, scrollImgLeft);
+			articles.eq(i).find(".rightShade, .rightArrow").on("mousedown", i, scrollImgRight);
 		}
-		$(".imgContainer").click(viewImage);
+		$("#imgView").find(".leftShade, .leftArrow").click(jumpToPrevImg);
+		$("#imgView").find(".rightShade, .rightArrow").click(jumpToNextImg);
 	}
 }
 
@@ -282,11 +290,18 @@ function scrollImgRight(event) {
 }
 
 function viewImage(event) {
-	var img = $("#imgView img");
-	var iframe = $("#imgView iframe")
-	var description = $("#imgView figcaption");
+	viewingArticleIndex = event.data.articleIndex;
+	viewingImgIndex = event.data.imgIndex;
+	showImage();
+}
+
+function showImage() {
+	var img = $("#imgView figure img");
+	var iframe = $("#imgView figure iframe")
+	var description = $("#imgView figure figcaption");
 	var view = $("#imgView");
-	var isVideo = $(event.delegateTarget).hasClass("video");
+	var imgContainer = articles.eq(viewingArticleIndex).find(".imgLine .imgContainer").eq(viewingImgIndex);
+	var isVideo = imgContainer.hasClass("video");
 	var w, h, maxW, maxH;
 	
 	if (!isVideo) {
@@ -294,15 +309,15 @@ function viewImage(event) {
 		isViewingVideo = false;
 		iframe.css("display", "none");
 		img.css("display", "block");
-		img.prop("src", $(event.delegateTarget).attr("data-src"));
+		img.prop("src", imgContainer.attr("data-src"));
 	} else {
 		isViewingVideo = true;
 		isViewingImage = false;
 		img.css("display", "none");
 		iframe.css("display", "block");
-		iframe.prop("src", $(event.delegateTarget).attr("data-src"));
+		iframe.prop("src", imgContainer.attr("data-src"));
 	}
-	description.html($(event.delegateTarget).attr("data-description"));
+	description.html(imgContainer.attr("data-description"));
 	resizeImageView(isVideo);
 	view.fadeIn(300);
 }
@@ -320,7 +335,7 @@ function resizeImageView(isVideo) {
 		w = 1440;
 		h = 810;
 	}
-	maxW = view.width() * 0.95;
+	maxW = view.width() - 200;
 	maxH = view.height() * 0.95 - 50;
 	if (w > maxW) {
 		h *= maxW / w; w = maxW;
@@ -334,6 +349,24 @@ function resizeImageView(isVideo) {
 		iframe.width(w);
 		iframe.height(h);
 	}
+}
+
+function jumpToNextImg(event) {
+	viewingImgIndex++;
+	if (viewingImgIndex >= articleImgCount[viewingArticleIndex]) {
+		viewingImgIndex = 0;
+	}
+	showImage();
+	event.stopPropagation();
+}
+
+function jumpToPrevImg(event) {
+	viewingImgIndex--;
+	if (viewingImgIndex < 0) {
+		viewingImgIndex = articleImgCount[viewingArticleIndex] - 1;
+	}
+	showImage();
+	event.stopPropagation();
 }
 
 function hideImage() {

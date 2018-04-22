@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+	<figure class="front">
+		<img src="articles/HeatGeodesics/thumb.png" class="thumbnail">
+		<figcaption>Geodesics in Heat</figcaption>
+	</figure>
+	<div class="back">
+		<div class="tags">
+			<span class="tagCollegeProject"></span>
+			<span class="tagResearch"></span>
+			<span class="tagUnity"></span>
+		</div>
+		<h2>Geodesics in Heat - Finding the shortest paths on 3D surfaces</h2>
+		<datetime>Nov. 2015</datetime>
+		<p class="author">Ruoqi He, Chia-Man Hung</p>
+		<p><img src="articles/HeatGeodesics/thumb.png" class="floatRight" style="width: 200px;">We created an interactive demo that implements the heat geodesics algorithm (proposed by Crane 2013) which generates the approximate distance field (geodesics) from a given source on 3D surfaces. The algorithm uses heat propagation to approximate the direction of shortest paths. This algorithm only involves solving linear systems and can be used on real-time scenarios. We extended this algorithm to handle area sources or multiple sources instead of single point sources. We also implemented a navigation system that allows an agent to follow the shortest path to its destination on a 3D surface once the distance field is calculated.</p>
+		<br>
+		<p>Features include:</p>
+		<ul>
+			<li>Click on the surface of a 3D model to set the source point and see the generated distance field (animated!)</li>
+			<li>Control-Click to set multiple sources, Shift-Click to set a continuous line source</li>
+			<li>See shortest paths to source from the mouse position by holding Alt</li>
+			<li>An additional small character will follow the shortest path to the source</li>
+			<li>9 Different 3D models including ones with complex boundaries</li>
+			<li>Heat flow and gradient of distance field visualizations</li>
+			<li>Adjustable time step and boundary condition combine factors</li>
+		</ul>
+		<p class="links">Links: 
+			<a href="http://www.bunny.com" target="_blank">Demo</a>
+			<a href="http://www.wolf.com" target="_blank">GitHub</a>
+			<a href="http://www.bunny.com" target="_blank">Paper (Crane 2013)</a>
+			<a href="http://www.icecream.com" target="_blank">Report</a></p>
+		<div class="imgWall">
+			<img src="articles/HeatGeodesics/p1.png" data-description="Shortest path on a horse (zebra?)">
+			<img src="articles/HeatGeodesics/p2.png" data-description="All models showcase">
+			<img src="articles/HeatGeodesics/p3.png" data-description="Left: Area source with naive heat propagation - Right: (Ours) Accurate area source">
+			<img src="articles/HeatGeodesics/p4.png" data-description="Left: Gradient of distance field (smoothed) - Right: Heat gradient (unsmoothed)">
+			<img src="articles/HeatGeodesics/p5.png" data-description="Left: Normal time step - Right: Large time step makes paths repulsive to boundaries">
+			<img src="articles/HeatGeodesics/p6.png" data-description="Different boundary conditions - Neumann / Dirichlet / Averaged">
+		</div>
+	</div>
+</body>
+</html>

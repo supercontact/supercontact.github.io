@@ -313,6 +313,13 @@ ul, ol {
 	left: -20px;
 	top: -20px;
 }
+.project .front .shadowInner {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	width: 180px;
+	height: 180px;
+}
 .project .back {
 	position: absolute;
 	left: -500px;
@@ -379,24 +386,28 @@ ul, ol {
 	top: 50%;
 	transform: translate(-50%, -50%);
 }
-.imgWall .rightShade {
+.rightShade {
 	display: block;
 	position: absolute;
 	right: 0;
 	top: 0;
+	width: 100px;
+	height: 100%;
 	z-index: 1;
 	cursor: pointer;
 }
-.imgWall .leftShade {
+.leftShade {
 	display: block;
 	position: absolute;
 	left: 0;
 	top: 0;
+	width: 100px;
+	height: 100%;
 	transform: scaleX(-1);
 	z-index: 1;
 	cursor: pointer;
 }
-.imgWall .rightArrow {
+.rightArrow {
 	display: block;
 	position: absolute;
 	right: 20px;
@@ -409,7 +420,7 @@ ul, ol {
 .rightArrow:hover, .rightShade:hover + .rightArrow {
 	right: 10px;
 }
-.imgWall .leftArrow {
+.leftArrow {
 	display: block;
 	position: absolute;
 	left: 20px;
@@ -441,6 +452,12 @@ ul, ol {
 .tags .tagPersonalProject::before {
 	content: "Personal Project";
 }
+.tags .tagResearch {
+	background-color: #0000FF;
+}
+.tags .tagResearch::before {
+	content: "Research";
+}
 .tags .tagGame {
 	background-color: #ffd800;
 }
@@ -448,7 +465,7 @@ ul, ol {
 	content: "Game";
 }
 .tags .tagTool {
-	background-color: blue;
+	background-color: #00AA00;
 }
 .tags .tagTool::before {
 	content: "Tool";
